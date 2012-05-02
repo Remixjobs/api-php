@@ -1,3 +1,23 @@
 {
-    name": "rj/api-php"
+    "name": "rj/api-php",
+    "description": "Php library to request Remixjobs API",
+    "keywords": ["remixjobs api library"],
+    "homepage": "http://github.com/Remixjobs/api-php",
+    "license": "MIT",
+    "authors": [
+        {
+            "name":"Arnaud Le Blanc",
+            "email":"arnaud@remixjobs.com"
+        }
+    ],
+
+    "autoload": {
+        "psr-0": { "Rj\\Api": "" }
+    },
+
+    "target-dir": "Rj/Api",
+
+    "require": {
+        "php": ">=5.3.2"
+    }
 }
