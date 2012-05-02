@@ -11,12 +11,6 @@
         }
     ],
 
-    "autoload": {
-        "psr-0": { "Rj\\Api": "" }
-    },
-
-    "target-dir": "Rj/Api",
-
     "require": {
         "php": ">=5.3.2"
     }
