@@ -4,8 +4,9 @@ class Remixjobs_Public_Api
 {
     protected $endpoint;
     protected $client;
+    protected $clientHeaders;
 
-    public function __construct($endpoint = 'https://remixjobs.com', Zend_Http_Client $client = null)
+    public function __construct($endpoint = 'https://remixjobs.com', Zend_Http_Client $client = null, $additionalClientHeaders = array())
     {
         $this->endpoint = $endpoint;
 
@@ -13,6 +14,15 @@ class Remixjobs_Public_Api
             $client = new Zend_Http_Client(null, array(
                 'useragent' => 'remixjobs-api/1.0',
             ));
+        }
+
+        $this->clientHeaders = array(
+            'Accept-Language' => 'fr',
+            'Accept' => 'application/json',
+        );
+
+        if (!empty($additionalClientHeaders)) {
+            $this->clientHeaders = array_merge($this->clientHeaders, $additionalClientHeaders);
         }
 
         $this->client = $client;
@@ -41,10 +51,7 @@ class Remixjobs_Public_Api
 
         $client->setUri($uri);
 
-        $client->setHeaders(array(
-            'Accept-Language' => 'fr',
-            'Accept' => 'application/json',
-        ));
+        $client->setHeaders($this->clientHeaders);
         
         $response = $client->request('GET');
         $data = null;
